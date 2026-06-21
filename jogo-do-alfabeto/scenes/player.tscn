@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://c34v7q60tift3"]
+
+[ext_resource type="Texture2D" uid="uid://csl07jko8g4rw" path="res://sprites/traced-Player.png" id="1_3vyb7"]
+
+[node name="Player" type="Node2D" unique_id=1802888267]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1993637458]
+scale = Vector2(0.21158858, 0.25927737)
+texture = ExtResource("1_3vyb7")
+flip_h = true

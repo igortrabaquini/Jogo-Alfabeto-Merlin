@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://cpg8ugdk8w82p"]
+
+[ext_resource type="Script" uid="uid://ngsmbdy6vpme" path="res://scripts/moeda.gd" id="1_qxuy4"]
+[ext_resource type="Texture2D" uid="uid://cf8o0est2bwod" path="res://sprites/traced-Moedal1.png" id="2_ola5h"]
+[ext_resource type="Texture2D" uid="uid://ygv2myo12d6p" path="res://sprites/traced-Moedal2.png" id="3_qev3f"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_188lh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ola5h")
+}],
+"loop": true,
+"name": &"1",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_qev3f")
+}],
+"loop": true,
+"name": &"2",
+"speed": 1.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_188lh"]
+radius = 37.01351
+
+[node name="Moeda" type="Area2D" unique_id=1857653321]
+script = ExtResource("1_qxuy4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1602877225]
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_188lh")
+animation = &"1"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=100877851]
+shape = SubResource("CircleShape2D_188lh")

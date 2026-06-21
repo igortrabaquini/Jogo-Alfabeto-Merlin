@@ -1,10 +1,48 @@
 [gd_scene format=3 uid="uid://djqjc0prm7qdo"]
 
+[ext_resource type="Script" uid="uid://1d7eole8koup" path="res://scripts/game.gd" id="1_lbhrr"]
 [ext_resource type="Texture2D" uid="uid://bljuyv1dxxuhp" path="res://sprites/Tabuleiro.png" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://c34v7q60tift3" path="res://scenes/player.tscn" id="2_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://cpg8ugdk8w82p" path="res://scenes/moeda.tscn" id="3_lnu2h"]
 
 [node name="Game" type="Node2D" unique_id=796843631]
+script = ExtResource("1_lbhrr")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1276785231]
 scale = Vector2(0.6889952, 0.68862915)
 texture = ExtResource("1_uwrxv")
 centered = false
+
+[node name="Player" parent="." unique_id=1802888267 instance=ExtResource("2_yqjtg")]
+position = Vector2(-89, -317)
+scale = Vector2(0.6, 0.6)
+
+[node name="Moeda" parent="." unique_id=1857653321 instance=ExtResource("3_lnu2h")]
+position = Vector2(118, 549)
+
+[node name="LabelTurno" type="Label" parent="." unique_id=53042160]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Casas" type="Node2D" parent="." unique_id=364396045]
+
+[node name="Inicio" type="Marker2D" parent="Casas" unique_id=325013454]
+position = Vector2(76, 273)
+
+[node name="A" type="Marker2D" parent="Casas" unique_id=1546964164]
+position = Vector2(316, 314)
+
+[node name="B" type="Marker2D" parent="Casas" unique_id=335692687]
+position = Vector2(443, 311)
+
+[node name="C" type="Marker2D" parent="Casas" unique_id=1647135729]
+position = Vector2(576, 314)
+
+[node name="D" type="Marker2D" parent="Casas" unique_id=2121855098]
+position = Vector2(703, 312)
+
+[node name="E" type="Marker2D" parent="Casas" unique_id=186242232]
+position = Vector2(837, 311)
+
+[node name="Fim" type="Marker2D" parent="Casas" unique_id=602962579]
+position = Vector2(1081, 306)
