@@ -1,0 +1,181 @@
+[gd_scene format=3 uid="uid://cgjwdtqenrrd6"]
+
+[ext_resource type="Texture2D" uid="uid://1n6ai8upepi5" path="res://sprites/ForcaBack.png" id="1_m1fbn"]
+[ext_resource type="FontFile" uid="uid://cxc0eex03gioj" path="res://fonts/BalooThambi2-ExtraBold.ttf" id="1_meky1"]
+[ext_resource type="Script" uid="uid://cpj631xtx0k1r" path="res://scripts/forca.gd" id="1_tde1c"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qy2b2"]
+font = ExtResource("1_meky1")
+font_size = 25
+font_color = Color(0.7088305, 0.3792512, 0.08240462, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_tde1c"]
+font = ExtResource("1_meky1")
+font_size = 70
+
+[sub_resource type="LabelSettings" id="LabelSettings_tto4u"]
+font = ExtResource("1_meky1")
+font_size = 50
+font_color = Color(0.11434797, 0.20224583, 0.26033455, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_meky1"]
+font = ExtResource("1_meky1")
+font_size = 50
+font_color = Color(0.49509, 0.21796954, 0.07373018, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_033bb"]
+font = ExtResource("1_meky1")
+font_size = 25
+font_color = Color(0.26653504, 0.42671844, 0.5248252, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_j12yy"]
+font = ExtResource("1_meky1")
+font_size = 25
+font_color = Color(0.7615681, 0.36216334, 0.15609342, 1)
+
+[node name="Forca" type="Control" unique_id=463258499]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 3.0
+offset_right = 1152.0
+offset_bottom = 648.0
+script = ExtResource("1_tde1c")
+
+[node name="LabelTitulo" type="Label" parent="." unique_id=1617129706]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="LabelTurno" type="Label" parent="." unique_id=2082458340]
+top_level = true
+layout_mode = 0
+offset_left = 555.0
+offset_top = 156.0
+offset_right = 735.0
+offset_bottom = 212.0
+label_settings = SubResource("LabelSettings_qy2b2")
+vertical_alignment = 1
+
+[node name="Letra1" type="Label" parent="." unique_id=1071014101]
+modulate = Color(0.52156866, 0.25490198, 0.03137255, 1)
+top_level = true
+layout_mode = 0
+offset_left = 325.0
+offset_top = 237.0
+offset_right = 422.0
+offset_bottom = 348.0
+label_settings = SubResource("LabelSettings_tde1c")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Letra2" type="Label" parent="." unique_id=1860765013]
+modulate = Color(0.52156866, 0.25490198, 0.03137255, 1)
+top_level = true
+layout_mode = 0
+offset_left = 440.0
+offset_top = 235.0
+offset_right = 537.0
+offset_bottom = 346.0
+label_settings = SubResource("LabelSettings_tde1c")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Letra3" type="Label" parent="." unique_id=755058094]
+modulate = Color(0.52156866, 0.25490198, 0.03137255, 1)
+top_level = true
+layout_mode = 0
+offset_left = 554.0
+offset_top = 237.0
+offset_right = 651.0
+offset_bottom = 348.0
+label_settings = SubResource("LabelSettings_tde1c")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Letra4" type="Label" parent="." unique_id=214878097]
+modulate = Color(0.52156866, 0.25490198, 0.03137255, 1)
+top_level = true
+layout_mode = 0
+offset_left = 672.0
+offset_top = 236.0
+offset_right = 769.0
+offset_bottom = 347.0
+label_settings = SubResource("LabelSettings_tde1c")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Letra5" type="Label" parent="." unique_id=1313886718]
+modulate = Color(0.52156866, 0.25490198, 0.03137255, 1)
+top_level = true
+layout_mode = 0
+offset_left = 786.0
+offset_top = 235.0
+offset_right = 883.0
+offset_bottom = 346.0
+label_settings = SubResource("LabelSettings_tde1c")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="." unique_id=1490097003]
+top_level = true
+layout_mode = 0
+offset_left = 325.0
+offset_top = 375.0
+offset_right = 639.0
+offset_bottom = 427.0
+alignment = 1
+
+[node name="BotaoTentar" type="Button" parent="." unique_id=102570588]
+layout_mode = 0
+offset_left = 670.0
+offset_top = 369.0
+offset_right = 879.0
+offset_bottom = 434.0
+
+[node name="LabelPontosJ1" type="Label" parent="." unique_id=1746689556]
+top_level = true
+layout_mode = 0
+offset_left = 406.0
+offset_top = 483.0
+offset_right = 479.0
+offset_bottom = 562.0
+text = "0"
+label_settings = SubResource("LabelSettings_tto4u")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelPontosJ2" type="Label" parent="." unique_id=1826469038]
+top_level = true
+layout_mode = 0
+offset_left = 709.0
+offset_top = 482.0
+offset_right = 782.0
+offset_bottom = 561.0
+text = "0"
+label_settings = SubResource("LabelSettings_meky1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=197191053]
+position = Vector2(-3, 0)
+scale = Vector2(0.74999994, 0.6328125)
+texture = ExtResource("1_m1fbn")
+centered = false
+
+[node name="LabelIndicacao1" type="Label" parent="." unique_id=566653419]
+layout_mode = 0
+offset_left = 348.0
+offset_top = 459.0
+offset_right = 540.0
+offset_bottom = 499.0
+text = "Pontos Jogador 1"
+label_settings = SubResource("LabelSettings_033bb")
+
+[node name="LabelIndicacao2" type="Label" parent="." unique_id=433255233]
+layout_mode = 0
+offset_left = 653.0
+offset_top = 459.0
+offset_right = 848.0
+offset_bottom = 499.0
+text = "Pontos Jogador 2"
+label_settings = SubResource("LabelSettings_j12yy")
