@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="Jogo do Alfabeto"
+run/main_scene="uid://djqjc0prm7qdo"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameManager="*uid://c6yj5mnrer4m6"
 
 [physics]
 

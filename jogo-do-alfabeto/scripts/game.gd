@@ -14,29 +14,45 @@ extends Node2D
 	$Casas/Fim
 ]
 
-var casa_atual := 0
-var jogador_atual := 1
 var jogo_finalizado := false
 
 func _ready():
 
-	label_turno.text = "Vez do Jogador 1"
-
 	moeda.moeda_lancada.connect(_on_moeda_lancada)
 
-	# Chegada da nave ao início
-	var tween = create_tween()
+	if GameManager.primeira_entrada:
 
-	tween.tween_property(
-		nave,
-		"global_position",
-		casas[0].global_position,
-		1.5
-	)
+		GameManager.primeira_entrada = false
 
-	await tween.finished
+		GameManager.casa_atual = 0
+		GameManager.jogador_atual = 1
+		GameManager.pontos_j1 = 0
+		GameManager.pontos_j2 = 0
 
-	label_turno.text = "Vez do Jogador 1"
+		label_turno.text = "Vez do Jogador 1"
+
+		var tween = create_tween()
+
+		tween.tween_property(
+			nave,
+			"global_position",
+			casas[0].global_position,
+			1.5
+		)
+
+		await tween.finished
+
+	else:
+
+		nave.global_position = casas[GameManager.casa_atual].global_position
+
+		if GameManager.jogador_atual == 1:
+			label_turno.text = "Vez do Jogador 1"
+		else:
+			label_turno.text = "Vez do Jogador 2"
+
+	if GameManager.casa_atual == casas.size() - 1:
+		finalizar_jogo()
 
 
 func _on_moeda_lancada(resultado):
@@ -46,44 +62,42 @@ func _on_moeda_lancada(resultado):
 
 	await mover_nave(resultado)
 
-	if casa_atual == casas.size() - 1:
+	if GameManager.casa_atual == casas.size() - 1:
 
-		jogo_finalizado = true
-
-		# Por enquanto ninguém tem pontos
-		label_turno.text = "Empate!"
-
+		finalizar_jogo()
 		return
 
-	trocar_turno()
+	get_tree().change_scene_to_file("res://scenes/forca.tscn")
 
 
 func mover_nave(passos):
 
 	var destino = min(
-		casa_atual + passos,
+		GameManager.casa_atual + passos,
 		casas.size() - 1
 	)
 
-	casa_atual = destino
+	GameManager.casa_atual = destino
 
 	var tween = create_tween()
 
 	tween.tween_property(
 		nave,
 		"global_position",
-		casas[casa_atual].global_position,
+		casas[destino].global_position,
 		0.8
 	)
 
 	await tween.finished
 
 
-func trocar_turno():
+func finalizar_jogo():
 
-	if jogador_atual == 1:
-		jogador_atual = 2
+	jogo_finalizado = true
+
+	if GameManager.pontos_j1 > GameManager.pontos_j2:
+		label_turno.text = "Jogador 1 venceu!"
+	elif GameManager.pontos_j2 > GameManager.pontos_j1:
+		label_turno.text = "Jogador 2 venceu!"
 	else:
-		jogador_atual = 1
-
-	label_turno.text = "Vez do Jogador %d" % jogador_atual
+		label_turno.text = "Empate!"

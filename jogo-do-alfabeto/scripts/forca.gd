@@ -16,11 +16,6 @@ extends Control
 
 var letras = []
 
-var jogador_atual = 1
-
-var pontos_j1 = 0
-var pontos_j2 = 0
-
 var palavra = ""
 var reveladas = []
 
@@ -64,10 +59,9 @@ func iniciar_jogo():
 	reveladas = ["_", "_", "_", "_", "_"]
 
 	atualizar_letras()
-
-	label_turno.text = "Vez do Jogador 1"
-
 	atualizar_pontos()
+
+	label_turno.text = "Vez do Jogador %d" % GameManager.jogador_atual
 
 	print("Palavra sorteada: ", palavra)
 
@@ -80,28 +74,28 @@ func atualizar_letras():
 
 func atualizar_pontos():
 
-	pontos_j1_label.text = "%d" % pontos_j1
-	pontos_j2_label.text = "%d" % pontos_j2
+	pontos_j1_label.text = str(GameManager.pontos_j1)
+	pontos_j2_label.text = str(GameManager.pontos_j2)
 
 
 func adicionar_pontos(valor):
 
-	if jogador_atual == 1:
-		pontos_j1 += valor
+	if GameManager.jogador_atual == 1:
+		GameManager.pontos_j1 += valor
 	else:
-		pontos_j2 += valor
+		GameManager.pontos_j2 += valor
 
 	atualizar_pontos()
 
 
 func trocar_turno():
 
-	if jogador_atual == 1:
-		jogador_atual = 2
+	if GameManager.jogador_atual == 1:
+		GameManager.jogador_atual = 2
 	else:
-		jogador_atual = 1
+		GameManager.jogador_atual = 1
 
-	label_turno.text = "Vez do Jogador %d" % jogador_atual
+	label_turno.text = "Vez do Jogador %d" % GameManager.jogador_atual
 
 
 func palavra_completa():
@@ -113,6 +107,13 @@ func palavra_completa():
 	return true
 
 
+func voltar_tabuleiro():
+
+	await get_tree().create_timer(1.5).timeout
+
+	get_tree().change_scene_to_file("res://scenes/game.tscn")
+
+
 func _on_botao_tentar():
 
 	var tentativa = entrada.text.strip_edges().to_upper()
@@ -122,32 +123,26 @@ func _on_botao_tentar():
 
 	entrada.clear()
 
-	# Tentativa de letra
 	if tentativa.length() == 1:
-
-		var encontrou = false
 
 		for i in range(5):
 
 			if palavra[i] == tentativa and reveladas[i] == "_":
 
 				reveladas[i] = tentativa
-
 				adicionar_pontos(1)
-
-				encontrou = true
 
 		atualizar_letras()
 
 		if palavra_completa():
 
 			label_turno.text = "Palavra completa!"
-			botao.disabled = true
+
+			await voltar_tabuleiro()
 			return
 
 		trocar_turno()
 
-	# Tentativa da palavra inteira
 	elif tentativa.length() == 5:
 
 		if tentativa == palavra:
@@ -166,7 +161,8 @@ func _on_botao_tentar():
 			atualizar_letras()
 
 			label_turno.text = "Palavra completa!"
-			botao.disabled = true
+
+			await voltar_tabuleiro()
 
 		else:
 
